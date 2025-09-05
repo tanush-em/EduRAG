@@ -1,0 +1,15 @@
+Cell division is the process by which a parent cell divides into two or more daughter cells. There are two main types of cell division: mitosis and meiosis.
+
+Mitosis is the process of cell division that results in two genetically identical daughter cells. It consists of four main phases:
+1. Prophase: Chromosomes condense and become visible, nuclear envelope breaks down
+2. Metaphase: Chromosomes align at the cell's equator (metaphase plate)
+3. Anaphase: Sister chromatids separate and move to opposite poles
+4. Telophase: Nuclear envelopes reform around the separated chromosomes
+
+Cytokinesis follows mitosis and divides the cytoplasm, completing cell division.
+
+Meiosis is a specialized form of cell division that produces gametes (sperm and egg cells) with half the number of chromosomes. It involves two rounds of division (meiosis I and meiosis II) and results in four genetically different daughter cells.
+
+The cell cycle includes interphase (G1, S, G2 phases) where the cell grows and DNA replicates, followed by mitosis. Proper regulation of the cell cycle is crucial for normal development and preventing cancer.
+
+Key regulatory proteins include cyclins and cyclin-dependent kinases (CDKs) that control progression through the cell cycle checkpoints.

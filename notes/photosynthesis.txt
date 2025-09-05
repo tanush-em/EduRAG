@@ -1,0 +1,13 @@
+Photosynthesis is the process by which plants, algae, and some bacteria convert light energy into chemical energy. This process occurs in the chloroplasts of plant cells, specifically in structures called thylakoids.
+
+The overall equation for photosynthesis is:
+6CO2 + 6H2O + light energy → C6H12O6 + 6O2
+
+Photosynthesis consists of two main stages:
+1. Light-dependent reactions (Light Reactions): These occur in the thylakoid membranes and convert light energy into chemical energy in the form of ATP and NADPH. Water molecules are split, releasing oxygen as a byproduct.
+
+2. Light-independent reactions (Calvin Cycle): These occur in the stroma of chloroplasts and use the ATP and NADPH from the light reactions to convert carbon dioxide into glucose.
+
+Key pigments involved in photosynthesis include chlorophyll a and chlorophyll b, which absorb light primarily in the blue and red wavelengths, reflecting green light (which is why plants appear green).
+
+The process is crucial for life on Earth as it produces oxygen and forms the base of most food chains by converting inorganic carbon dioxide into organic compounds that other organisms can use.

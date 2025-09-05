@@ -1,0 +1,18 @@
+DNA (Deoxyribonucleic Acid) is the hereditary material in humans and almost all other organisms. It contains the genetic instructions for the development, functioning, growth, and reproduction of all known organisms.
+
+DNA has a double helix structure discovered by James Watson and Francis Crick in 1953. The structure consists of two polynucleotide chains that wind around each other in a right-handed helix.
+
+Each DNA strand is made up of nucleotides, which consist of:
+- A phosphate group
+- A sugar molecule (deoxyribose)
+- A nitrogenous base (adenine, thymine, cytosine, or guanine)
+
+The two strands are held together by hydrogen bonds between complementary base pairs:
+- Adenine (A) pairs with Thymine (T) - 2 hydrogen bonds
+- Cytosine (C) pairs with Guanine (G) - 3 hydrogen bonds
+
+The strands are antiparallel, meaning one runs 5' to 3' and the other runs 3' to 5'. The sugar-phosphate backbone is on the outside, while the nitrogenous bases are on the inside.
+
+DNA replication is semiconservative, meaning each new DNA molecule contains one original strand and one newly synthesized strand. This process is essential for cell division and ensures genetic information is passed accurately to daughter cells.
+
+The human genome contains approximately 3 billion base pairs and about 20,000-25,000 genes that code for proteins.
