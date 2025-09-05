@@ -1,0 +1,17 @@
+Protein synthesis is the process by which cells build proteins using the genetic information encoded in DNA. This process occurs in two main stages: transcription and translation.
+
+Transcription occurs in the nucleus and involves copying the genetic information from DNA to messenger RNA (mRNA). The process includes:
+1. Initiation: RNA polymerase binds to the promoter region of a gene
+2. Elongation: RNA polymerase reads the DNA template strand and synthesizes mRNA
+3. Termination: RNA polymerase reaches a termination sequence and releases the mRNA
+
+The mRNA then undergoes processing including the addition of a 5' cap and poly-A tail, and removal of introns (splicing).
+
+Translation occurs in the cytoplasm at ribosomes and involves converting the mRNA sequence into a protein. The process includes:
+1. Initiation: The ribosome assembles around the mRNA and the first tRNA
+2. Elongation: Amino acids are added one by one to the growing polypeptide chain
+3. Termination: A stop codon is reached and the protein is released
+
+Transfer RNA (tRNA) molecules carry amino acids to the ribosome and match them to the appropriate codons on the mRNA. The genetic code is read in triplets called codons, where each codon specifies a particular amino acid.
+
+There are 20 standard amino acids that can be combined in various sequences to create the vast diversity of proteins found in living organisms. The sequence of amino acids determines the protein's structure and function.
