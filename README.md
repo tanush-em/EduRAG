@@ -63,11 +63,12 @@ EduRAG/
    pip install -r requirements.txt
    ```
 
-4. (Optional) Set up OpenAI API key for full functionality:
+4. Set up Groq API key:
    ```bash
-   export OPENAI_API_KEY="your-api-key-here"
+   # Create a .env file in the project root
+   echo "GROQ_API_KEY=your-groq-api-key-here" > .env
    ```
-   Note: The app will work without an API key but will show fallback responses.
+   Note: The app requires a Groq API key to function properly. Get your free API key from [console.groq.com](https://console.groq.com).
 
 ### Frontend Setup
 
@@ -164,7 +165,7 @@ Check the health status of the API.
 
 - **Embeddings**: Uses `sentence-transformers` with the `all-MiniLM-L6-v2` model
 - **Vector Database**: FAISS for efficient similarity search
-- **LLM**: OpenAI GPT-3.5-turbo (with fallback for no API key)
+- **LLM**: Groq API with Llama 3.1 8B Instant model
 - **Frontend**: React 18 with Vite and Tailwind CSS
 - **Backend**: FastAPI with automatic API documentation at `/docs`
 
@@ -183,7 +184,7 @@ Check the health status of the API.
 ### No Answers/Empty Responses
 - Make sure notes are properly indexed (click "Reindex Notes")
 - Check that your question is relevant to the content in your notes
-- Verify the OpenAI API key is set if you want full LLM responses
+- Verify the Groq API key is set in the `.env` file
 
 ## Development
 

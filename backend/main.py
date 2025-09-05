@@ -10,8 +10,11 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sentence_transformers import SentenceTransformer
-import openai
-from openai import OpenAI
+from groq import Groq
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI(title="EduRAG API", version="1.0.0")
 
@@ -146,7 +149,7 @@ def retrieve_relevant_docs(query: str, k: int = 3) -> List[Dict[str, Any]]:
     return relevant_docs
 
 def get_llm_response(question: str, context: str) -> Dict[str, str]:
-    """Get response from OpenAI API with hardcoded format."""
+    """Get response from Groq API with hardcoded format."""
     
     # Hardcoded prompt that students cannot modify
     system_prompt = """You are an educational assistant. Answer questions using the provided context from study notes. 
@@ -166,11 +169,15 @@ Question: {question}
 Please answer following the exact format specified above."""
 
     try:
-        # Try to use OpenAI API if key is available
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        # Use Groq API
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise ValueError("GROQ_API_KEY not found in environment variables")
+        
+        client = Groq(api_key=api_key)
         
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="llama-3.1-8b-instant",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -182,13 +189,13 @@ Please answer following the exact format specified above."""
         answer_text = response.choices[0].message.content
         
     except Exception as e:
-        print(f"OpenAI API error: {e}")
-        # Fallback response if no API key or error
-        answer_text = f"""1. Direct Answer: I cannot provide a complete answer as the AI service is not available. Please check your OpenAI API key configuration.
+        print(f"Groq API error: {e}")
+        # Fallback response if API error
+        answer_text = f"""1. Direct Answer: I cannot provide a complete answer as the AI service encountered an error.
 
 2. Explanation: The system attempted to process your question "{question}" but encountered an issue with the AI service. The retrieved context from notes was: {context[:200]}...
 
-3. Summary: AI service unavailable - please configure OpenAI API key for full functionality."""
+3. Summary: AI service error - please try again or check the system configuration."""
 
     # Parse the response into structured format
     try:
