@@ -67,10 +67,10 @@ function App() {
       <div className="max-w-4xl mx-auto px-4">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            NoteQuery Pro
+            QA Assist
           </h1>
           <p className="text-lg text-gray-600">
-            Professional QA bot for intelligent note analysis and structured answers
+            An assistance tool for students - intelligent note analysis and structured answers
           </p>
         </header>
 

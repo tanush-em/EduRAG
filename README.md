@@ -1,6 +1,6 @@
-# NoteQuery Pro - Professional QA Bot
+# QA Assist - Student Assistance Tool
 
-A full-stack RAG (Retrieval-Augmented Generation) question answering application designed as a professional QA bot for intelligent note analysis and structured responses.
+A full-stack RAG (Retrieval-Augmented Generation) question answering application designed as an assistance tool for students, providing intelligent note analysis and structured responses.
 
 ## Features
 

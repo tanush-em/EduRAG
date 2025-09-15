@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-app = FastAPI(title="NoteQuery Pro API", version="1.0.0")
+app = FastAPI(title="QA Assist API", version="1.0.0")
 
 # CORS middleware for frontend communication
 app.add_middleware(
@@ -271,7 +271,7 @@ This is a 14-mark question. Please answer following the exact format specified a
 @app.on_event("startup")
 async def startup_event():
     """Initialize the application on startup."""
-    print("Starting NoteQuery Pro API...")
+    print("Starting QA Assist API...")
     load_faiss_index()
 
 @app.post("/ask", response_model=AnswerResponse)
