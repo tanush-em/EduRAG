@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-app = FastAPI(title="EduRAG API", version="1.0.0")
+app = FastAPI(title="NoteQuery Pro API", version="1.0.0")
 
 # CORS middleware for frontend communication
 app.add_middleware(
@@ -37,6 +37,7 @@ notes_path = Path("../notes")
 # Pydantic models
 class QuestionRequest(BaseModel):
     question: str
+    answer_type: str  # "2_mark" or "14_mark"
 
 class AnswerResponse(BaseModel):
     direct_answer: str
@@ -148,25 +149,44 @@ def retrieve_relevant_docs(query: str, k: int = 3) -> List[Dict[str, Any]]:
     
     return relevant_docs
 
-def get_llm_response(question: str, context: str) -> Dict[str, str]:
-    """Get response from Groq API with hardcoded format."""
+def get_llm_response(question: str, context: str, answer_type: str) -> Dict[str, str]:
+    """Get response from Groq API with hardcoded format based on answer type."""
     
-    # Hardcoded prompt that students cannot modify
-    system_prompt = """You are an educational assistant. Answer questions using the provided context from study notes. 
-    Always format your response EXACTLY as follows:
-    
-    1. Direct Answer: [Provide a clear, concise answer in 1-2 sentences]
-    2. Explanation: [Provide step-by-step reasoning with specific references to the notes]
-    3. Summary: [Provide one key takeaway sentence]
-    
-    Use the context provided to give accurate, educational responses. If the context doesn't contain enough information, say so clearly."""
-    
-    user_prompt = f"""Context from notes:
+    if answer_type == "2_mark":
+        # Hardcoded prompt for 2-mark answers
+        system_prompt = """You are an educational assistant. Answer questions using the provided context from study notes. 
+        For 2-mark answers, format your response EXACTLY as follows:
+        
+        1. Direct Answer: [Provide a clear, concise answer in 1-2 sentences]
+        2. Explanation: [Provide at least 4 bullet points or lines with step-by-step reasoning and specific references to the notes]
+        3. Summary: [Provide one key takeaway sentence]
+        
+        The explanation section MUST contain at least 4 bullet points or lines. Use the context provided to give accurate, educational responses."""
+        
+        user_prompt = f"""Context from notes:
 {context}
 
 Question: {question}
 
-Please answer following the exact format specified above."""
+This is a 2-mark question. Please answer following the exact format specified above with at least 4 bullet points in the explanation section."""
+        
+    else:  # 14_mark
+        # Hardcoded prompt for 14-mark answers
+        system_prompt = """You are an educational assistant. Answer questions using the provided context from study notes. 
+        For 14-mark answers, format your response EXACTLY as follows:
+        
+        1. Direct Answer: [Provide a clear, concise answer in 1-2 sentences]
+        2. Explanation: [Provide 3-4 subheadings, each with 6-9 bullet points or lines with detailed reasoning and specific references to the notes]
+        3. Summary: [Provide one key takeaway sentence]
+        
+        The explanation section MUST have 3-4 subheadings, and each subheading MUST contain 6-9 bullet points or lines. Use the context provided to give accurate, educational responses."""
+        
+        user_prompt = f"""Context from notes:
+{context}
+
+Question: {question}
+
+This is a 14-mark question. Please answer following the exact format specified above with 3-4 subheadings in the explanation section, each containing 6-9 bullet points."""
 
     try:
         # Use Groq API
@@ -176,13 +196,16 @@ Please answer following the exact format specified above."""
         
         client = Groq(api_key=api_key)
         
+        # Adjust max_tokens based on answer type
+        max_tokens = 1000 if answer_type == "14_mark" else 500
+        
         response = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            max_tokens=500,
+            max_tokens=max_tokens,
             temperature=0.3
         )
         
@@ -241,7 +264,7 @@ Please answer following the exact format specified above."""
 @app.on_event("startup")
 async def startup_event():
     """Initialize the application on startup."""
-    print("Starting EduRAG API...")
+    print("Starting NoteQuery Pro API...")
     load_faiss_index()
 
 @app.post("/ask", response_model=AnswerResponse)
@@ -267,7 +290,7 @@ async def ask_question(request: QuestionRequest):
     ])
     
     # Get LLM response
-    response = get_llm_response(request.question, context)
+    response = get_llm_response(request.question, context, request.answer_type)
     
     return AnswerResponse(**response)
 
@@ -291,4 +314,4 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5892)

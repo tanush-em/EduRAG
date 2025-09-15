@@ -19,9 +19,9 @@ function AnswerDisplay({ answer }) {
           <h3 className="text-lg font-medium text-gray-800 mb-2">
             Explanation
           </h3>
-          <p className="text-gray-700 leading-relaxed">
+          <div className="text-gray-700 leading-relaxed whitespace-pre-line">
             {answer.explanation}
-          </p>
+          </div>
         </div>
 
         {/* Summary */}

@@ -8,18 +8,18 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const handleQuestionSubmit = async (question) => {
+  const handleQuestionSubmit = async (question, answerType) => {
     setLoading(true)
     setError(null)
     setAnswer(null)
 
     try {
-      const response = await fetch('http://localhost:8000/ask', {
+      const response = await fetch('http://localhost:5892/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, answer_type: answerType }),
       })
 
       if (!response.ok) {
@@ -41,7 +41,7 @@ function App() {
     setError(null)
 
     try {
-      const response = await fetch('http://localhost:8000/reindex', {
+      const response = await fetch('http://localhost:5892/reindex', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,10 +67,10 @@ function App() {
       <div className="max-w-4xl mx-auto px-4">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            EduRAG
+            NoteQuery Pro
           </h1>
           <p className="text-lg text-gray-600">
-            Ask questions about your study notes and get structured answers
+            Professional QA bot for intelligent note analysis and structured answers
           </p>
         </header>
 

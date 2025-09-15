@@ -1,6 +1,6 @@
-# EduRAG - Educational RAG Question Answering App
+# NoteQuery Pro - Professional QA Bot
 
-A full-stack RAG (Retrieval-Augmented Generation) question answering application designed for students to ask questions about their study notes and receive structured, educational responses.
+A full-stack RAG (Retrieval-Augmented Generation) question answering application designed as a professional QA bot for intelligent note analysis and structured responses.
 
 ## Features
 
@@ -17,7 +17,7 @@ A full-stack RAG (Retrieval-Augmented Generation) question answering application
 ## Project Structure
 
 ```
-EduRAG/
+NoteQuery-Pro/
 ├── backend/                 # FastAPI backend
 │   ├── main.py             # Main application
 │   ├── requirements.txt    # Python dependencies
@@ -92,7 +92,7 @@ cd backend
 uvicorn main:app --reload
 ```
 
-The backend will be available at `http://localhost:8000`
+The backend will be available at `http://localhost:5892`
 
 ### Start the Frontend
 
@@ -174,12 +174,12 @@ Check the health status of the API.
 ### Backend Issues
 - Ensure all Python dependencies are installed: `pip install -r requirements.txt`
 - Check that the `./notes/` directory exists and contains `.txt` files
-- Verify the backend is running on port 8000
+- Verify the backend is running on port 5892
 
 ### Frontend Issues
 - Ensure Node.js dependencies are installed: `npm install`
 - Check that the frontend is running on port 5173
-- Verify the backend is accessible at `http://localhost:8000`
+- Verify the backend is accessible at `http://localhost:5892`
 
 ### No Answers/Empty Responses
 - Make sure notes are properly indexed (click "Reindex Notes")
