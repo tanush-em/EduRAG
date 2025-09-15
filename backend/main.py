@@ -243,9 +243,16 @@ This is a 14-mark question. Please answer following the exact format specified a
                 if current_section == "direct":
                     direct_answer += " " + line
                 elif current_section == "explanation":
-                    explanation += " " + line
+                    # Preserve line breaks and formatting for explanation
+                    if explanation and not explanation.endswith('\n'):
+                        explanation += "\n"
+                    explanation += line + "\n"
                 elif current_section == "summary":
                     summary += " " + line
+        
+        # Clean up explanation formatting
+        if explanation:
+            explanation = explanation.strip()
         
         return {
             "direct_answer": direct_answer or "No direct answer provided.",
